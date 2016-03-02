@@ -1,0 +1,41 @@
+@charset "utf-8";
+body{background-color: #f6f6f6;}
+
+.list{display: block;min-height: 1%;}
+.list li{position: relative;float: left;margin-left: 34px;margin-top: 20px;width: 200px;text-align: center;font-size: 16px;}
+.list li a{display: block;padding: 4px 4px 15px;width: 190px;color: #333;background: url(../images/new/list-pic-bg.png) repeat-x bottom;border: 1px solid #c8c8c8;border-radius: 2px;box-shadow: 0 0 10px 2px rgba(102,102,102,.2);transition: box-shadow .5s ease-out;}
+.list li a img{display: block;width: 190px;height: 260px;}
+.list li a:hover{padding: 2px 2px 13px;background: #fff;border: 3px solid #ff3922;color: #ff3922;box-shadow: 0 0 10px 2px rgba(255,57,34,.5);}
+.list li span{position: absolute;left: 4px;bottom: 52px;padding-top: 16px;width: 190px;text-align: center;height: 24px;line-height: 24px;color: #fff;font-size: 12px;background: url(../images/new/list-title-bg.png) repeat-x;}
+.list li span i{position: relative;top: 1px;margin-right: 5px;display: inline-block;width:18px;height: 15px;background: url(../images/new/list-s.png) no-repeat 0 -344px;}
+.list li img{display: block;margin-bottom: 15px;}
+
+.hm-live{}
+.hm-live li{position: relative;float: left;margin-left: 30px;margin-top: 25px;display: inline;width: 298px;}
+.hm-live li img{display: block;width: 288px;height: 163px;}
+.hm-live li a{display: block;padding: 4px 4px 10px;width: 288px;color: #333;background: url(../images/new/list-pic-bg.png) repeat-x bottom;border-radius: 3px;border: 1px solid #c8c8c8;box-shadow: 0 0 10px 2px rgba(102,102,102,.2);transition: box-shadow .5s ease-out;}
+.hm-live li a:hover{padding: 2px 2px 8px;background: #fff;border: 3px solid #ff3922;box-shadow: 0 0 10px 2px rgba(255,57,34,.5);}
+.hm-live li a h4{margin-top: 15px;padding: 0 4px;height: 20px;line-height: 20px;color: #333;font-size: 14px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.hm-live li a p{margin-top: 10px;padding: 0 4px;line-height: 20px;}
+.hm-live li a p:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
+.hm-live li a p span{display: inline-block;height: 20px;line-height: 20px;color: #666;overflow: hidden;}
+.hm-live li a p .type{position: absolute;left: 12px;bottom: 14px;height: 21px; padding-right: 10px/*;width: 278px;*/height: 30px;line-height: 30px;color: #FF3A23;text-align: right;/*background: url(../images/new/light-bg.png) no-repeat;*/}
+.hm-live li a p .username{float: left;margin-right: 10px;padding-left: 22px;max-width: 42%;background: url(../images/new/index-s.png) no-repeat 0 -25px;}
+.hm-live li a p .view{float: left;padding-left: 22px;max-width: 20%;background: url(../images/new/index-s.png) no-repeat 0 -62px;}
+.hm-live li a i{position: absolute;left: 5px;top: 5px;width:288px;height: 160px;background-color: #000;opacity: 0;filter:alpha(opacity=0);transition: opacity .3s ease-out;}
+.hm-live li a i.off{opacity: .5;filter:alpha(opacity=50);}
+.hm-live li a em{position: absolute;left: 50%;top: 55px;margin-left: -30px;width: 60px;height: 60px;background: url(../images/new/index-s.png) no-repeat -440px -146px;transform: scale(1.5);opacity: 0;filter:alpha(opacity=0);transition: all .3s ease-out;}
+.hm-live li a b{position: absolute;top: 70px;width: 110px;height: 30px;line-height: 30px;color: #fff;font-size: 14px;text-align: center;background:rgba(0,0,0,.8);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr= #80000000);border-radius: 15px;}
+.hm-live li a dfn{position: absolute;left: 5px;top: 5px;padding-left: 13px;width: 41px;height: 25px;line-height: 25px;color: #fff;background: url(../images/new/index-s.png) no-repeat -447px -268px;}
+.hm-live li a .dnf{position: absolute;left: 5px;top: 5px;padding-left: 13px;width: 41px;height: 25px;line-height: 25px;color: #fff;background: url(../images/new/index-s.png) no-repeat -447px -300px;}
+.hm-live li a:hover i{opacity: .5;filter:alpha(opacity=50);}
+.hm-live li a:hover em{opacity: 1;filter:alpha(opacity=100);transform: scale(1);}
+.hm-live li a:hover p span{color: #666;}
+.hm-live li a:hover p .type{color:#FF3A23;}
+.hm-live li a:hover h4{color: #ff3922;}
+
+.hm-live-more{margin-top: 40px;margin-left: 30px;margin-bottom: -10px;height: 58px;line-height: 58px;border: 1px solid #c8c8c8;font-size: 16px;background: url(../images/new/list-more.png) repeat-x;box-shadow: 0 0 10px 2px rgba(102,102,102,.2);}
+.hm-live-more a{display: block;height: 58px;color: #666;}
+.hm-live-more a:active{background-color: #fff;}
+.hm-live-more img{position: relative;top: 3px;display: inline-block;margin-right: 10px;}
+
