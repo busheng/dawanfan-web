@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="keywords" content="游戏直播,直播,直播信息整合,直播整合，全部直播">
 <meta name="renderer" content="webkit">
-<title>大碗饭-当前热门Dota2直播</title>
+<title>大碗饭- 地下城与勇士</title>
 <link href="css/base.css" rel="stylesheet">
 <link rel="shortcut icon"href="favicon.ico"> 
 <link href="css/lefthead.css" rel="stylesheet">
@@ -75,12 +75,12 @@ return false;
 
 <div class="hm-box">
     <!--<h2>所有直播</h2>-->
-    <h2>魔兽争霸</h2><!--<span class="title_tips"> 个主播正在直播</span>-->
+    <h2>地下城与勇士－DNF</h2><!--<span class="title_tips"> 个主播正在直播</span>-->
     <div id="live-list">
         <ul class="hm-live clearfix">
 
         <?php 
-            loadlive("war3","cate");
+            loadlive("dnf","cate");
         ?>
         </ul>
         <div class="hm-live-more tac" id="listdata"><a href="javascript:;">点击加载更多</a></div>
