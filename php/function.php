@@ -11,6 +11,22 @@ function to_chin($word) {
             return '斗鱼';
         case 'panda':
             return '熊猫';
+	case 'movie':
+	    return '影视';
+	case 'hwzb':
+	    return '户外直播';
+	case 'baby':
+	    return '美女';
+	case 'wow':
+	    return '魔兽';
+	case 'war3':
+	    return '魔兽';
+	case 'other':
+	    return 'PCgame';
+	case 'dnf':
+	    return 'DNF';
+	case 'cf':
+	    return 'CF';
         case 'huomao':
             return '火猫';
          case 'huya':
