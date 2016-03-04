@@ -43,9 +43,9 @@ function getnum($word){
         case 'lol':
             return 5000;
         case 'ls':
-            return 3000;
+            return 1000;
         case 'dota2':
-            return 3000;
+            return 1000;
 	case 'movie':
 	    return 1000;
 	case 'hwzb':
