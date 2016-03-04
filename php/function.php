@@ -14,7 +14,7 @@ function to_chin($word) {
 	case 'movie':
 	    return '影视';
 	case 'hwzb':
-	    return '户外直播';
+	    return '户外';
 	case 'baby':
 	    return '美女';
 	case 'wow':
@@ -22,7 +22,7 @@ function to_chin($word) {
 	case 'war3':
 	    return '魔兽';
 	case 'other':
-	    return 'PCgame';
+	    return 'PC';
 	case 'dnf':
 	    return 'DNF';
 	case 'cf':
@@ -161,7 +161,7 @@ while($row = mysql_fetch_assoc($result)) {
         <h4><?php echo $row['title'];?></h4>
         <p>
             <span class="type fr"><?php echo to_chin($row['cate']); ?></span>
-            <span class="username"><?php $name = substr($row['zhubo'], 6); echo $name; ?> </span>
+            <span class="username"><?php $name = substr($row['zhubo'],6); echo $name; ?> </span>
             <span class="view"><?php 
                 $i = $row['view'];
                 if ($i >= 10000) {
