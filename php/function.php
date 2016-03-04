@@ -49,7 +49,7 @@ function getnum($word){
 	case 'movie':
 	    return 1000;
 	case 'hwzb':
-	    return 3000;
+	    return 1000;
 	case 'baby':
 	    return 3000;
 	case 'wow':
