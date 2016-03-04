@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="keywords" content="直播整合,游戏直播,直播,直播信息整合,全部直播">
+<meta name="keywords" content="直播整合,直播平台整合,直播信息整合,直播综合，直播综合平台，全部直播">
 <meta name="renderer" content="webkit">
 <title>大碗饭TV-直播信息整合</title>
 <link href="css/base.css" rel="stylesheet">
