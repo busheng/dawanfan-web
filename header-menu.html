@@ -1,9 +1,284 @@
+<?php require_once('php/api/config.php');
+$login = 0;
+//if logged in redirect to members page
+if( $user->is_logged_in() ){ 
+  $login = 1;
+} else {
+  $login = 0;
+}
+
+?>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#reg, .regist-link').click(function(){
+    document.getElementById("registerIbox").style.display = "block";
+     document.getElementById("userLoginBox").style.display = "none";
+    });
+
+    $('#login, .login-link').click(function(){
+    document.getElementById("userLoginBox").style.display = "block";
+    document.getElementById("registerIbox").style.display = "none";
+
+    });
+    $('.ibox-close').click(function(){
+    document.getElementById("userLoginBox").style.display = "none";
+    document.getElementById("registerIbox").style.display = "none";
+    });
+    $('.inputs').bind('input', function() {
+        if(this.value != '') {
+            $(this).next().hide();
+        } else {
+            $(this).next().show();
+        }
+
+    });
+
+
+    $('.subscribe').click(function(){
+        var $ele = $(this);
+        $.ajax({
+            type: 'get',
+            url: 'php/api/subscribe.php',
+            data: {cate : $ele.attr("cate"), zhubo: $ele.attr("zhubo")},
+            success:function(data) {
+                if(data=="unlogin") {
+                    alert("客官请先登入～");
+                    document.getElementById("registerIbox").style.display = "none";
+                    document.getElementById("userLoginBox").style.display = "block";
+                } else {
+                  $ele.hide();
+                  $ele.next().next().show().fadeOut(500);
+                  var $this = $ele.next().next();
+                  setTimeout(function(){
+                  $this.next().fadeIn(500);
+                  }, 500);
+                }
+            }
+        });
+
+    });
+    $('.unsubscribe').click(function(){
+        $(this).hide();
+        $(this).prev().prev().show().fadeOut(500);
+        var $this = $(this).prev().prev();
+        setTimeout(function(){
+            $this.prev().fadeIn(500);
+        }, 500); 
+
+        var $ele = $(this);
+        $.ajax({
+            type: 'get',
+            url: 'php/api/unsubscribe.php',
+            data: {cate : $ele.attr("cate"), zhubo: $ele.attr("zhubo")},
+            success:function(data) {
+            }
+        });
+    });
+
+
+
+  });
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+$(document).ready(function() {
+    var x_timer;    
+    $("#username").keyup(function (e){
+        clearTimeout(x_timer);
+        var user_name = $(this).val();
+        if (user_name.length == null || user_name == "") {
+            $("#user-result").html('<img src="img/not-available.png" />');
+        } else {
+          x_timer = setTimeout(function(){
+              check_username_ajax(user_name);
+          }, 1000);
+        }
+    }); 
+
+function check_username_ajax(username){
+    $("#user-result").html('<img src="img/ajax-loader.gif" />');
+    $.post('php/api/nickname_check.php', {'username':username}, function(data) {
+      if (data == "not_available") {
+        $("#user-result").html('<img src="img/not-available.png" />');
+      } else {
+        $("#user-result").html('<img src="img/available.png" />');
+      } 
+    });
+}
+});
+
+$(document).ready(function(){
+    $('#yp-box-form').on('submit', function(e) {
+        var data = $(this).serialize();
+        $.ajax({
+            type: 'get',
+            url: $(this).attr('action'),
+            data: data,
+            success:function(data) {
+              if(data == "lgoin_success") {
+                  document.getElementById("userLoginBox").style.display = "none";
+                  document.getElementById("registerIbox").style.display = "none";
+                  location.reload(true);
+              } else {
+                alert("密码帐号不匹配～");
+              }
+
+            }
+        });
+        e.preventDefault();
+    });
+});
+
+$(document).ready(function(){
+    $('#reg-form').on('submit', function(e) {
+
+    var email = document.forms["reg_form"]["email"].value;
+    var name = document.forms["reg_form"]["username"].value;
+    var passwordConfirm = document.forms["reg_form"]["passwordConfirm"].value;
+    var password = document.forms["reg_form"]["password"].value;
+    var error = "";
+
+    if (email == null || email == "") {
+        document.getElementById("error_part").innerHTML = "邮箱不能为空呦～";
+        return false;
+    }
+    
+    if (!validateEmail(email)){
+        document.getElementById("error_part").innerHTML = "邮箱好像填错啦～";
+        return false;}
+    $.post('php/api/email_check.php',{ email: email }, function(data) {
+        if(data == "not_available"){ 
+            $('#error_part').text("这个邮箱已经被注册过了呦～");
+            return false;
+        } 
+    });
+    if (name == null || name == "") {
+        document.getElementById("error_part").innerHTML = "用户名不能为空呀～";
+        return false;
+    }
+    if (name.length < 3){
+        document.getElementById("error_part").innerHTML = "用户名长度至少为3哦～";
+        return false;
+    }     
+    $.post('php/api/nickname_check.php',{ username: name }, function(data) {
+         if(data == "not_available"){ 
+              $('#error_part').text("用户名已经被人用啦，请换一个用户名吧～");
+              return false;
+          } 
+    });
+    if (password == null || password == "") {
+        document.getElementById("error_part").innerHTML = "密码不能为空～～～！";
+        return false;
+    }
+
+    if (password.length < 6){
+        document.getElementById("error_part").innerHTML = "密码长度至少为6，长才有安全感！";
+        return false;
+    }     
+
+    if (passwordConfirm == null || passwordConfirm == "") {
+        document.getElementById("error_part").innerHTML = "请在输入一次密码～";
+        return false;
+    }
+    if (password != passwordConfirm) {
+        document.getElementById("error_part").innerHTML = "两次密码不一致！";
+        return false;
+    }
+
+    var data = $(this).serialize();
+        $.ajax({
+            type: 'get',
+            url: $(this).attr('action'),
+            data: data,
+            success:function(data) {
+               if (data == "reg_success") {
+                    location.reload(true);
+               } else {
+                  alert(data);
+               }
+            }
+        });
+        e.preventDefault();
+    });
+});
+
+
+
+function logout() {
+  if(confirm('客官确认要退出登录吗～？')) {
+      $.ajax({
+            type: 'get',
+            url: 'php/api/logout.php',
+            success:function(data) {
+               window.location.href = data;
+            }
+      });
+  }
+}
+
+
+</script>
+
+
 
 <div class="hm-header pr">
-    <div class="wp" id="header" >
+    
+      
+      <div class="wp" id="header" >
         <div  style = "margin-right:100px;">
-           <div class="hm-no-login fr"><a id ="login1" href ="javascript:;">登录</a>|<a id ="login2" href ="javascript:;">注册</a></div>
+           <div class="hm-no-login fr"             
+           <?php
+                if ($login == 0) {
+                    echo 'style="display:block;"';  
+                } else {
+                    echo 'style="display:none;"';    
+                }
+            ?>><a id ="login" href ="javascript:;">登录</a>|<a id ="reg" href ="javascript:;">注册</a></div>
         </div>
+
+
+      <div id="user_info_x" 
+      <?php
+          if ($login == 1) {
+              echo 'style="display:block;"';  
+          } else {
+            echo 'style="display:none;"';    
+          }
+      ?>
+      >
+               <a class="hm-live-btn fr" href="http://www.dawanfantv.com/">申请直播</a>
+        <ul class="hm-user fr">
+            <li class="dropdown pr">
+                <a href="javascript:;" title=""><!--<span>hm56a176d90a369</span><i></i>--> <?php echo $_SESSION['username']; ?></a>
+                <div class="dropbox user  pa">
+                    <div class="user-tool">
+                        <a class="u1" onclick="logout();" title="退出登录" href="javascript:;">退出登录</a>
+                    </div>
+                </div>
+            </li>
+
+                        <li class="dropdown pr">
+                <a><span>我的订阅<!--<em class="msgtips">0</em>--></span><i></i></a>
+
+                <div class="dropbox rss pa">
+                    <div class="no-rss">哇哦，订阅空空如也<br>快去把喜欢的主播装进来吧~</div>
+                        <div class="more pa"><a class="more pa" href="/hot.php">去看看热门直播</a></div>
+                    <div class="hm-rss">
+                    </div>
+
+                                      
+                </div>
+            </li>
+        </ul>
+        </div>
+
         <!--
         <div class="hm-search pr fr">
             <form  method="get" action="/search" autocomplete="off" id="search_frm" onsubmit="return valite();">
@@ -14,32 +289,177 @@
             </form>
         </div>
         -->
-<script type="text/javascript">
-  $(document).ready(function(){
 
-    $('#login1, #login2').click(function(){
 
-      // do something
-      alert("程序员还在努力开发中～\n     ...(｡•ˇ‸ˇ•｡) ...");
-
-    });
-
-  });
-</script>
         <h1><a href="http://www.dawanfantv.com/"></a></h1>
-                <ul class="hm-nav fl">
-              <li><a class="cur" href="/">首页</a></li>
+        
+        <ul class="hm-nav fl">
+            <li><a class="cur" href="index.php">首页</a></li>
             <li class="dropdown pr"><a>游戏<i></i></a>
 
                 <div class="dropbox pa">
                     <h3>热门游戏</h3>
                     <div class="match">
-                        <a href="dota2" target=_blank title="DOTA2">DOTA2</a><a href="lol" target=_blank title="英雄联盟">英雄联盟</a><a href="ls" target=_blank title="炉石传说">炉石传说</a> <a href="baby" target=_blank title="萌妹御姐">萌妹御姐</a> <a href="other" target=_blank title="other">其他游戏</a><a href="http://www.douyutv.com/" target=_blank title="斗鱼">斗鱼</a><a href="http://zhanqi.tv/" target=_blank title="战旗">战旗</a><a href="http://www.huomaotv.cn/" target=_blank title="火猫">火猫</a> <a href="http://panda.tv/" target=_blank title="熊猫">熊猫</a> <a href="http://huya.com/" target=_blank title="虎牙">虎牙</a>               </div>
-                    <a class="more pa" href="hot">当前热门</a>
+                        <a href="dota2.php" target=_blank title="DOTA2">DOTA2</a><a href="lol.php" target=_blank title="英雄联盟">英雄联盟</a><a href="ls.php" target=_blank title="炉石传说">炉石传说</a> <a href="baby.php" target=_blank title="萌妹御姐">萌妹御姐</a> <a href="other.php" target=_blank title="other">其他游戏</a><a href="http://www.douyutv.com/" target=_blank title="斗鱼">斗鱼</a><a href="http://zhanqi.tv/" target=_blank title="战旗">战旗</a><a href="http://www.huomaotv.cn/" target=_blank title="火猫">火猫</a> <a href="http://panda.tv/" target=_blank title="熊猫">熊猫</a> <a href="http://huya.com/" target=_blank title="虎牙">虎牙</a>               </div>
+                    <a class="more pa" href="hot.php">当前热门</a>
                 </div>
             </li>            
 
         </ul>
-                                    <li><h2><a href="http://www.dawanfantv.com/"></a></h2></li>
+        
+        <li><h2><a href="http://www.dawanfantv.com/"></a></h2></li>
     </div>
+</div>
+
+
+<div id="userLoginBox" class="ibox loginIbox" style="display:none;">
+  <div class="login-hd">
+    <i class="qn-icon"></i>
+    <a href="javascript:;" class="ibox-close js-close" title="关闭"></a>
+  </div>
+  <div class="login-bd clearfix">
+    <!-- 登录左边区域 -->
+    <div class="login-bd-left">
+      <form action="php/api/login_check.php" method = "post" autocomplete="off" id="yp-box-form">
+        <div class="row js-input">
+          <input type="text" class="input inputs" name="account" data-valid="uname" maxlength="100" />
+          <label class="label input-labels">账号/手机号码</label>
+        </div>
+        <div class="row js-input">
+          <input type="password" class="input inputs" name="password" data-valid="password" maxlength="40" />
+          <label class="label input-labels">登录密码</label>
+        </div>
+        <!-- 极验验证 -->
+        <div class="jyyz js-geetest-script" style="height: 42px;"></div>
+        <!-- 极验验证End -->
+        <!--
+        <div class="label-row">
+          <i class="checkbox dv js-checkbox"></i>
+          <input type="checkbox" class="dv terms-service-input js-checkbox-hidden" style="display:none;" />
+          <span class="dv">阅读并接受<a href="/common/agreement.html" target="_blank">《战旗TV用户协议》</a></span>
+        </div>
+        <div class="label-row clearfix">
+          <a target="_blank" href="/user/findpwd" class="fr">找回密码</a>
+          <i class="checkbox checkboxed dv js-checkbox"></i>
+          <input type="checkbox" checked="checked" class="js-checkbox-hidden" style="display:none;" />
+          <span class="dv">一个月内免登录</span>
+        </div>
+        -->
+        <button type="submit" class="login-btn orange-btn js-pop-login-btn">登 录</button>
+      </form>
+    </div>
+    <!-- 登录左边区域End -->
+    <!-- 登录右边区域 -->
+    <div class="login-bd-right">
+      <!--
+      <div class="sub-hd">您可以使用其它登录方式</div>
+      <div class="sub-bd">
+        <ul class="clearfix" style="padding-left:48px;">
+          <li style="display:none;">
+            <a href="/api/auth/user.other_login?type=bf" class="third-login-link bf" title="边锋通行证登录"></a>
+          </li>
+          <li>
+            <a href="/api/auth/user.other_login?type=qq" class="third-login-link qq" title="QQ登录"></a>
+          </li>
+          <li>
+            <a href="/api/auth/user.other_login?type=bd" class="third-login-link bd" title="百度账号登录"></a>
+          </li>
+        </ul>
+      </div>
+    -->
+      <div class="textC">
+        <a href="javascript:;" class="a regist-link">没有账号，快速注册>></a>
+      </div>
+    </div>
+    <!-- 登录右边区域End -->
+  </div>
+</div>
+
+<div class="ibox loginIbox registerIbox" id="registerIbox" style="display: none;">
+  <div class="login-hd">
+    <i class="qn-icon"></i>
+    <a href="javascript:;" class="ibox-close js-close" title="关闭"></a>
+  </div>
+  <div class="login-bd clearfix">
+    <!-- 登录左边区域 -->
+    <div class="login-bd-left register-bd-left tabs">
+
+
+      <!-- 普通注册 -->
+      <div class="tabc active">
+        <form id = "reg-form" name = "reg_form" role="form" method="post" action="php/api/reg.php" on autocomplete="off" onsubmit="return validateForm()" class="sub-iboxBd js-normal-form">
+                            <?php
+                //check for any errors
+                if(isset($error)){
+                    foreach($error as $error){
+                        echo '<p class="bg-danger">'.$error.'</p>';
+                    }
+                }
+                                //if action is joined show sucess
+                if(isset($_GET['action']) && $_GET['action'] == 'joined'){
+                    echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
+                }
+                ?>
+          <p id ="error_part" class="bg-danger"></p>
+
+          <div class="row js-input">
+            <input type="text" name="email" class="inputs input required" name="account" data-type='account' />
+            <label class="label input-labels">邮箱</label>
+          </div>
+          <div class="row js-input">
+            <input type="text" name="username" id = "username" class="input inputs required" name="nickname" value="<?php if(isset($error)){ echo $_POST['username']; } ?>" data-type='nickname' />
+            <label class="label input-labels">昵称</label> <span id="user-result"></span>
+          </div>
+          <div class="row js-input">
+            <input type="password" name="password" class="input inputs required" id="password-input" name="password" data-type="password" />
+            <label class="label input-labels">登录密码（6-30位）</label>
+          </div>
+          <div class="row js-input">
+            <input type="password" name="passwordConfirm" class="input inputs required" id="password-input-confirm" data-type="password" data-confirm="1" />
+            <label class="label input-labels">再次输入登录密码</label>
+          </div>
+          <!-- 极验验证 -->
+          <div class="jyyz js-geetest-normal-script" style="height: 42px;"></div>
+          <!-- 极验验证End -->
+          
+          <div class="label-row">
+           <!-- <i class="checkbox dv js-checkbox"></i>-->
+           <!--
+            <input type="checkbox" class="dv terms-service-input js-checkbox-hidden" style="" />
+            <span class="dv">阅读并接受<a href="/common/agreement.html" target="_blank">《战旗TV用户协议》</a></span>
+          -->
+          </div>
+          
+
+          <button type="submit" name="submit" class="login-btn orange-btn">注 册</button>
+        </form>
+      </div>
+      <!-- 普通注册End -->
+    </div>
+    <!-- 登录左边区域End -->
+    <!-- 登录右边区域 -->
+    <div class="login-bd-right">
+      <!--
+      <div class="sub-hd">您可以使用其它登录方式</div>
+      <div class="sub-bd">
+        <ul class="clearfix" style="padding-left:48px;">
+          <li style="display:none;">
+            <a href="/api/auth/user.other_login?type=bf" class="third-login-link bf" title="边锋通行证登录"></a>
+          </li>
+          <li>
+            <a href="/api/auth/user.other_login?type=qq" class="third-login-link qq" title="QQ登录"></a>
+          </li>
+          <li>
+            <a href="/api/auth/user.other_login?type=bd" class="third-login-link bd" title="百度账号登录"></a>
+          </li>
+        </ul>
+      </div>
+    -->
+      <div class="textC">
+        <a href="javascript:;" class="a login-link">登录>></a>
+      </div>
+    </div>
+    <!-- 登录右边区域End -->
+  </div>
+
 </div>

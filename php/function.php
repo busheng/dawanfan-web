@@ -11,25 +11,27 @@ function to_chin($word) {
             return '斗鱼';
         case 'panda':
             return '熊猫';
-	case 'movie':
-	    return '影视';
-	case 'hwzb':
-	    return '户外';
-	case 'baby':
-	    return '美女';
-	case 'wow':
-	    return '魔兽';
-	case 'war3':
-	    return '魔兽';
-	case 'other':
-	    return 'PC';
-	case 'dnf':
-	    return 'DNF';
-	case 'cf':
-	    return 'CF';
+	    case 'movie':
+	        return '影视';
+	    case 'hwzb':
+	       return '户外';
+	    case 'baby':
+	       return '美女';
+	    case 'wow':
+	       return '魔兽';
+	    case 'war3':
+	       return '魔兽';
+	    case 'other':
+	       return 'PC';
+	    case 'dnf':
+	       return 'DNF';
+        case 'sc2':
+            return '星际';
+	    case 'cf':
+	       return 'CF';
         case 'huomao':
             return '火猫';
-         case 'huya':
+        case 'huya':
             return '虎牙';
         case 'zhanqi':
             return '战旗'; 
@@ -68,16 +70,21 @@ function getnum($word){
     }
 }
 
-function loadlive($tb_name, $action){
-// Create connection
 
+function loadlive($tb_name, $action, $user){
+$userid;
 $domain   = "127.0.0.1";  // or yourdomainname.com
 $username = "root";       // db username
 $password = "LOUbu123";    // db password
 $dbName   = "zhibo";   // db name
 
 $con = mysql_connect($domain,$username,$password);
+    if ($user->is_logged_in()) {
+         $userid = $_SESSION['memberID'];
 
+    } else {
+        $userid = 0;
+    } 
 // Check connection
 if (mysqli_connect_errno()){
 
@@ -111,28 +118,68 @@ if ($tableID == 0) {
         $username = busheng;
         $strsql = "SELECT * FROM dota2 
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'
                     UNION ALL
                     SELECT * FROM lol 
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'
                     UNION ALL
                     SELECT * FROM ls
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM dnf
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM wow
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM war3
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM hwzb
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM baby
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM sc2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM movie
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM cf
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'
                     UNION ALL
                     SELECT * FROM other
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'";
-
 
     }
 } else {
@@ -181,11 +228,24 @@ $row = mysql_fetch_row($result);
 if ($row >= 1) {
     mysql_data_seek($result, 0);
 }echo "<div><ul>";
+if ($userid == 0 && $action == "user_love"){
+    header("Location: index.php"); 
+    exit();
+}
+else if ($row == 0 && $action == "user_love") {
+    echo "<h2>客官，您好像还没有关注任何主播，快去关注一下吧</h2>";
+}
+
+
 while($row = mysql_fetch_assoc($result)) {
+    if ($action == "user_love") {
+        $subscribed = 1;
+    } else {
+    $subscribed = $user->is_user_subscribe($row['cate'], $row['zhubo'], $userid);
+    }
 ?>
 <!-- <li style="float:left;display:inline;"> -->
 <li>
-
     <a href="<?php echo $row['link']; ?>" target=_blank >
 
     <img class = "lazy" src = "<?php echo $row['img_url']; ?>"/>
@@ -204,6 +264,21 @@ while($row = mysql_fetch_assoc($result)) {
 
         </p>
     <i></i><div class="dnf"><?php echo to_chin($row['web']); ?></div> <em></em></a>
+
+                                <div class="focus-box">
+                                    <a cate = <?php echo $row['cate']; ?> zhubo = <?php echo $row['zhubo'];?> class="r-com-btn follow-btn hide subscribe" href="javascript:;" title="关注" data-anchor-info="follow"
+                                        <?php
+                                        if ($subscribed == 1) echo 'style = "display:none;"';
+                                        ?>
+                                        >关注一下</a>
+                                    <a class="r-com-btn follow-btn hide " href="javascript:;" title="关注" data-anchor-info="follow" style = "display:none;">已经取消关注</a>
+                                    <a class="r-com-btn follow-btn yet " href="javascript:;" data-anchor-info="followed" style = "display:none;">再次点击可取消关注</a>
+                                    <a cate = <?php echo $row['cate']; ?> zhubo = <?php echo $row['zhubo'];?> class="r-com-btn follow-btn yet unsubscribe" href="javascript:;" data-anchor-info="followed" 
+                                        <?php
+                                        if ($subscribed != 1) echo 'style = "display:none;"';
+                                        ?>
+                                        >已关注</a>
+                                </div>
 </li>
 <?php
 }

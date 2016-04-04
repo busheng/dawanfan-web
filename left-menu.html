@@ -1,16 +1,28 @@
 <script type="text/javascript">
-  $(document).ready(function(){
+ $(document).ready(function(){
+    $('#left_my_subscrite').click(function(){
+        $.ajax({
+            type: 'get',
+            url: 'php/api/is_login.php',
+            success:function(data) {
+              if(data == "unlogin") {
+                    alert("客官请先登入～");
+                    document.getElementById("registerIbox").style.display = "none";
+                    document.getElementById("userLoginBox").style.display = "block";
+              } else {
+                    window.location.replace("user_love.php");
 
-    $('#login3, #login4, #left_my_subscrite').click(function(){
+              }
 
-      // do something
-      alert("程序员还在努力开发中～\n     ...(｡•ˇ‸ˇ•｡) ...");
-
+            }
+        });
     });
 
-  });
+});
+
 </script>
 
+</style>
 
 
 <div class="hm-menu pf">
@@ -18,21 +30,13 @@
 </div>
 <div class="allmenu">
     
-    <div class="hm-left-user_test">
-        <div class= "no-user">
-            <p>您还没有登录, 请登录!</p>
-
-            <div class = "no-user-btn"><a class="no-user-reg" id = "login3" href="javascript:;">注册</a><a class="no-user-login" id = "login4" href="javascript:;">登录</a></div>
-        </div>
-    </div>
-
        <div class="money-tips"></div>
    <!--订阅-->
     <div class="sroll" id="menusroll">
         <div class="list-nav">
             <!--<a href="/"><i class="icon-home"></i>火猫首页</a>-->
-            <a href="/"><i class="icon-home"></i>首页</a>
-            <a href="hot"><i class="icon-hot"></i>当前热门</a>
+            <a href="index.php"><i class="icon-home"></i>首页</a>
+            <a href="hot.php"><i class="icon-hot"></i>当前热门</a>
             <!--<a  id="left_my_subscrite" href="user_love.php"><i class="icon-my-love"></i>我的订阅-->
             <a  id="left_my_subscrite" href="javascript:;"><i class="icon-my-love"></i>我的订阅
                 <!--class="btn_login"-->
@@ -44,7 +48,7 @@
             <h3>直播大全</h3>
 
             <div class="hot-list">
-                <a href="dota2" target=_self title="DOTA2">DOTA2</a><a href="lol" target=_self title="英雄联盟">英雄联盟</a><a href="ls" target=_self title="炉石传说">炉石传说</a> <a href="baby" target=_self title="萌妹御姐">萌妹御姐</a>  <a href="hwzb" target=_self title="户外直播">户外直播</a>  <a href="wow" target=_self title="魔兽世界">魔兽世界</a>  <a href="war3.php" target=_self title="魔兽争霸">魔兽争霸</a>   <a href="sc2.php" target=_self title="星际争霸">星际争霸</a>     <a href="dnf" target=_self title="DNF">DNF</a>   <a href="cf" target=_self title="穿越火线">穿越火线</a>  <a href="movie" target=_self title="影视动漫">影视动漫</a>    <a href="other" target=_self title="other">其他游戏</a>        
+                <a href="dota2.php" target=_self title="DOTA2">DOTA2</a><a href="lol.php" target=_self title="英雄联盟">英雄联盟</a><a href="ls.php" target=_self title="炉石传说">炉石传说</a> <a href="baby.php" target=_self title="萌妹御姐">萌妹御姐</a>  <a href="hwzb.php" target=_self title="户外直播">户外直播</a>  <a href="wow.php" target=_self title="魔兽世界">魔兽世界</a>  <a href="war3.php" target=_self title="魔兽争霸">魔兽争霸</a>   <a href="sc2.php" target=_self title="星际争霸">星际争霸</a>     <a href="dnf.php" target=_self title="DNF">DNF</a>   <a href="cf.php" target=_self title="穿越火线">穿越火线</a>  <a href="movie.php" target=_self title="影视动漫">影视动漫</a>    <a href="other.php" target=_self title="other">PC游戏</a>        
              </div>
         </div>
         <div class="list-bx">
@@ -81,7 +85,7 @@ function googleTranslateElementInit() {
 </div>
 <div class="minimenu hide">
     <!--<div id="left_user_info"></div>-->
-    <li id="user_message"></li>
+
     <li><a href="/channel/all"><i class="icon-mini-live"></i>直播</a></li>
     <li><a href="/game"><i class="icon-mini-game"></i>游戏</a></li>
     <li id="left_sub"><a id="left_my_sub" href="/member/sub"><i class="icon-mini-rss"></i>订阅

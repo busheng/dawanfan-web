@@ -1,26 +1,41 @@
-<?php
-ob_start();
-session_start(); 
+<?php 
+      include('header-menu.html');
+      require_once('php/function.php');
+      require_once('php/api/config.php');
+      include('left-menu.html');      
 ?>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="直播整合,直播平台整合,直播信息整合,直播综合，直播综合平台，全部直播">
 <meta name="renderer" content="webkit">
-<title>大碗饭－联系与反馈</title>
+<title> <?php echo $_SESSION['1_title'] ?></title>
 <link href="css/base.css" rel="stylesheet">
 <link rel="shortcut icon"href="img/favicon.ico"> 
 <link href="css/lefthead.css" rel="stylesheet">
-<link href="http://static.huomaotv.cn/static/new2015/css/list.css" rel="stylesheet">
+<link href="css/list.css" rel="stylesheet">
 <link href="http://static.huomaotv.cn/static/new2015/css/Scrollbar.css" type="text/css" rel="stylesheet" />
 <script src="http://static.huomaotv.cn/static/hm2015/public/js/jquery-1.7.1.min.js"></script>
+
 <div style="display:none;">
     <!--<script src="http://s11.cnzz.com/z_stat.php?id=1255309289&web_id=1255309289" language="JavaScript"></script>-->
+
     <script type="text/javascript">
         document.write("<scr"+"ipt src=\"http://s11.cnzz.com/z_stat.php?id=1255309289&web_id=1255309289\"></sc"+"ript>")
     </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73060540-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </div>
     <style>
         .hm-w1000 .wp{width: auto;}
@@ -42,10 +57,6 @@ session_start();
 <body>
     <!--    off-->
 
-<?php include('left-menu.html'); 
-      include('header-menu.html');
-      include('php/function.php');
-?>
 
 <script type="text/javascript">
     var ajaxurl = '/home/ajax/get_game_list.html';
@@ -78,23 +89,25 @@ return false;
 
 <div class="hm-box">
     <!--<h2>所有直播</h2>-->
-    <h2>联系与反馈</h2><!--<span class="title_tips"> 个主播正在直播</span>-->
+    <h2><?php echo $_SESSION['2_title'] ?></h2><!--<span class="title_tips"> 个主播正在直播</span>-->
     <div id="live-list">
-
         <ul class="hm-live clearfix">
-            <h3></h3>
-            <h3 style="color:black;margin-left:50px;margin-top:20px;">  邮箱：coop@dawanfantv.com</h3>
-            <h3 style="color:black;margin-left:50px">    感谢宝贵意见和合作意向。</h3>
+
+        <?php 
+            loadlive($_SESSION['cate'],$_SESSION['method'], $user);
+        ?>
         </ul>
     </div>
 </div>
 
 
 <script>document.domain='huomaotv.cn';</script>
+
 <script src="http://static.huomaotv.cn/static/hm2015/public/js/jquery-1.7.1.min.js"></script>
 <script src="http://static.huomaotv.cn/static/hm2015/public/art/jquery.artDialog.js"></script>
 <script src="http://static.huomaotv.cn/static/hm2015/public/art/artDialog.source.js?skin=default"></script>
 <link href="/static/default/style/login.css" rel="stylesheet">
+
 <div style= "display:none;">
 <!--<script src="http://s4.cnzz.com/z_stat.php?id=1255309280&web_id=1255309280" language="JavaScript">-->
 <script type="text/javascript">
@@ -162,7 +175,7 @@ $(function(){
       });
    });
   var count=$('.hm-live li').length;
-  if(!count){$('.hm-live').append('<li></li>');$('#listdata').hide();}else{ if(count>=psize)$('#listdata').show();listlive(0);}
+  if(!count){$('.hm-live').append('<li>暂无相关直播频道</li>');$('#listdata').hide();}else{ if(count>=psize)$('#listdata').show();listlive(0);}
   $('.hm-live li').find('a').each(function(index){
      $(this).attr('href',$(this).attr('href')+'?from=channel');
   });
@@ -177,6 +190,5 @@ $(function(){
         $("img.lazy").lazyload({threshold : 300});
     });
 </script>
-
 </body>
 </html>
