@@ -88,7 +88,7 @@ textarea:-moz-placeholder {color:#999;}
 .hm-header .hm-user>li>a>span{margin-left: 5px;display: inline-block;max-width: 160px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .hm-header .hm-user li a i{top: -9px;background-position: -67px 0;width: 9px;height: 5px;}
 
-.hm-header .hm-live-btn{margin-left: 25px;margin-top: 24px;padding-left: 35px;width: 85px;height: 32px;line-height: 32px;color: #fff;font-size: 16px;background: url(../img/index-s.png) no-repeat -380px -43px;}
+.hm-header .hm-live-btn{margin-left: 25px;margin-top: 24px;padding-left: 35px;width: 85px;height: 32px;line-height: 32px;color: #fff;font-size: 16px;background: url(../img/list-pic-bg.png) no-repeat -380px -43px;}
 
 
 .dropbox{left: 10px;top: 80px;width: 310px;height: 280px;background-color: #fff;box-shadow: 0 0 8px 8px rgba(0,0,0,.15);border-radius: 3px;-webkit-transition: all 0.3s;-moz-transition: all 0.3s;transition: all 0.3s;-webkit-transform: translateY(-5%);-moz-transform: translateY(-5%);-ms-transform: translateY(-5%);transform: translateY(-5%);opacity: 0;z-index: 999;visibility: hidden;}
