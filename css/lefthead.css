@@ -21,7 +21,7 @@ body{background-color: #f6f6f6;}
 .hm-left-user_test .user-info .avatar{float: left;margin-right: 10px;display: inline;width: 40px;height: 40px;border-radius: 3px;}
 .hm-left-user_test .user-info h4{margin-top: -1px;display: inline-block;max-width: 150px;height: 22px;line-height: 22px;color: #ccc;font-size: 14px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 .hm-left-user_test .user-info p{color: #ccc;margin-top: -8px;}
-.hm-left-user_test .user-info a.exit{position: absolute;right: 20px;top: 42px;width: 16px;height: 16px;background: url(../images/new/index-s.png) no-repeat -121px 0;}
+.hm-left-user_test .user-info a.exit{position: absolute;right: 20px;top: 42px;width: 16px;height: 16px;background: url(../img/index-s.png) no-repeat -121px 0;}
 .hm-left-user_test .user-lv{margin:20px 20px 10px;height: 4px;background-color: #424242;border-radius: 2px;cursor: pointer;}
 .hm-left-user_test .user-lv .lv-loading{height: 4px;background-color: #ff3922;background:-webkit-linear-gradient(top,#ff5846,#db311e);background:-o-linear-gradient(top,#ff5846,#db311e);background:-moz-linear-gradient(top,#ff5846,#db311e);background:-ms-linear-gradient(top,#ff5846,#db311e);background:linear-gradient(top,#ff5846,#db311e);filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#ff5846',endColorStr='#db311e',gradientType='0');border-radius: 2px;}
 .hm-left-user_test .user-lv span{visibility: hidden;position: absolute;left: 0;top: -34px;margin-left: -50px;width: 140px;height: 26px;line-height: 24px;color: #333;font-size: 12px;text-align: center;background-color: #eaeaea;background-color: rgba(234,234,234,.9);border-radius: 3px;transition: left .5s linear;}
