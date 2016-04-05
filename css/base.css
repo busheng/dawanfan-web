@@ -2801,7 +2801,7 @@ button{border:none;}
 .loginIbox .login-hd{
   position:relative;
   height:78px;
-  background:url(http://localhost/~busheng/dawanfancopycopy/img/log_reg.jpg) no-repeat;
+  background:url(../img/log_reg.jpg) no-repeat;
 }
 .loginIbox .login-hd .ibox-close{
   position:absolute;
@@ -2977,7 +2977,7 @@ button{border:none;}
 /* 注册 */
 .registerIbox .login-hd{
   height:78px;
-  background:url(http://localhost/~busheng/dawanfancopycopy/img/log_reg.jpg) no-repeat;
+  background:url(../img/log_reg.jpg) no-repeat;
   background-position:0 -78px;
 }
 .registerIbox .login-hd .qn-icon{
