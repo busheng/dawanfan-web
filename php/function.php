@@ -115,7 +115,6 @@ if ($tableID == 0) {
     } else if ($action == "hot") {
         $strsql = "SELECT * FROM dota2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM lol WHERE active = 'yes'and view > 100000 union all SELECT * FROM ls WHERE active = 'yes'and view > 100000 UNION ALL SELECT * FROM other WHERE active = 'yes'and view > 100000 order by view desc";
     } else if ($action == "user_love") {
-        $username = busheng;
         $strsql = "SELECT * FROM dota2 
                         WHERE zhubo in (
                                 SELECT zhubo FROM loves WHERE userID = '{$userid}')
@@ -190,31 +189,71 @@ if ($tableID == 0) {
     } else if ($action == "hot") {
         $strsql = "SELECT * FROM baby2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM dota22 WHERE active = 'yes'and view > 100000 union all SELECT * FROM lol2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM ls2 WHERE active = 'yes'and view > 100000 UNION ALL SELECT * FROM war3 WHERE active = 'yes'and view > 100000 union all SELECT * FROM dnf WHERE active = 'yes'and view > 100000 union all SELECT * FROM movie WHERE active = 'yes'and view > 100000 union all SELECT * FROM sc2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM hwzb WHERE active = 'yes'and view > 100000 union all SELECT * FROM cf WHERE active = 'yes'and view > 100000 union all SELECT * FROM wow WHERE active = 'yes'and view > 100000 union all SELECT * FROM other2 WHERE active = 'yes'and view > 100000 order by view desc";
     } else if ($action == "user_love") {
-        $username = busheng;
-        $strsql = "SELECT * FROM dota2 
+        $strsql = "SELECT * FROM dota22 
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'
                     UNION ALL
-                    SELECT * FROM lol 
+                    SELECT * FROM lol2 
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'
                     UNION ALL
-                    SELECT * FROM ls
+                    SELECT * FROM ls2
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
                         AND active = 'yes'
                     UNION ALL
-                    SELECT * FROM other
+                    SELECT * FROM dnf2
                         WHERE zhubo in (
-                                SELECT zhubo FROM loves WHERE userID 
-                                   in (SELECT memberID FROM members WHERE username = '{$username}'))
-                        AND active = 'yes'";
-    }
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM wow2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM war32
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM hwzb2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+
+                    UNION ALL
+                    SELECT * FROM baby2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM sc22
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM movie2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM cf2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'
+                    UNION ALL
+                    SELECT * FROM other2
+                        WHERE zhubo in (
+                                SELECT zhubo FROM loves WHERE userID = '{$userid}')
+                        AND active = 'yes'";    
+            }
 
 }
 
