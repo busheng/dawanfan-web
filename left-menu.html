@@ -92,3 +92,97 @@ function googleTranslateElementInit() {
     <div class="miniline"></div>
 </div>
 </div>
+<script type="text/javascript">
+ $(document).ready(function(){
+    $('#left_my_subscrite').click(function(){
+        $.ajax({
+            type: 'get',
+            url: 'php/api/is_login.php',
+            success:function(data) {
+              if(data == "unlogin") {
+                    alert("客官请先登入～");
+                    document.getElementById("registerIbox").style.display = "none";
+                    document.getElementById("userLoginBox").style.display = "block";
+              } else {
+                    window.location.replace("user_love.php");
+
+              }
+
+            }
+        });
+    });
+
+});
+
+</script>
+
+<div class="hm-menu pf">
+<div class="allmenu">
+    
+       <div class="money-tips"></div>
+   <!--订阅-->
+    <div class="sroll" id="menusroll">
+        <div class="list-nav">
+            <!--<a href="/"><i class="icon-home"></i>火猫首页</a>-->
+            <a href="index.php"><i class="icon-home"></i>首页</a>
+            <a href="hot.php"><i class="icon-hot"></i>当前热门</a>
+            <!--<a  id="left_my_subscrite" href="user_love.php"><i class="icon-my-love"></i>我的订阅-->
+            <a  id="left_my_subscrite" href="javascript:;"><i class="icon-my-love"></i>我的订阅
+                <!--class="btn_login"-->
+            <!---->
+            </a>
+
+        </div>
+        <div class="list-bx">
+            <h3>直播大全</h3>
+
+            <div class="hot-list">
+                <a href="dota2.php" target=_self title="DOTA2">DOTA2</a><a href="lol.php" target=_self title="英雄联盟">英雄联盟</a><a href="ls.php" target=_self title="炉石传说">炉石传说</a> <a href="baby.php" target=_self title="萌妹御姐">萌妹御姐</a>  <a href="hwzb.php" target=_self title="户外直播">户外直播</a>  <a href="wow.php" target=_self title="魔兽世界">魔兽世界</a>  <a href="war3.php" target=_self title="魔兽争霸">魔兽争霸</a>   <a href="sc2.php" target=_self title="星际争霸">星际争霸</a>     <a href="dnf.php" target=_self title="DNF">DNF</a>   <a href="cf.php" target=_self title="穿越火线">穿越火线</a>  <a href="movie.php" target=_self title="影视动漫">影视动漫</a>    <a href="other.php" target=_self title="other">PC游戏</a>        
+             </div>
+        </div>
+        <div class="list-bx">
+            <h3>直播网站</h3>
+
+            <div class="hot-list">
+                <a href="http://www.douyutv.com/" target=_blank title="斗鱼">斗鱼</a><a href="http://zhanqi.tv/" target=_blank title="战旗">战旗</a><a href="http://www.huomaotv.cn/" target=_blank title="火猫">火猫</a> <a href="http://panda.tv/" target=_blank title="熊猫">熊猫</a> <a href="http://huya.com/" target=_blank title="虎牙">虎牙</a>      </div>
+        </div>
+        <div class="list-bx noborder">
+            <div class="event">
+                            </div>
+        </div>
+    </div>
+
+    <div class="list-bottom pa">
+        <!--申请直播-开始直播-->
+        <div class="list-line"></div>
+        <div class="list-tool"><a
+                    href="contact.php"
+                    target="_blank">联系与反馈</a></div>
+        <div class="list-tool"><a
+                    href="http://www.dawanfantv.com/"
+                    target="_blank">www.dawanfantv.com</a></div>
+
+        <div id="google_translate_element" style = "text-align: center;"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'zh-CN', includedLanguages: 'de,en,es,fr,ja,ko,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+    </div>
+
+</div>
+<div class="minimenu hide">
+    <!--<div id="left_user_info"></div>-->
+
+    <li><a href="/channel/all"><i class="icon-mini-live"></i>直播</a></li>
+    <li><a href="/game"><i class="icon-mini-game"></i>游戏</a></li>
+    <li id="left_sub"><a id="left_my_sub" href="/member/sub"><i class="icon-mini-rss"></i>订阅
+            <!--class="btn_login"-->
+            <!---->
+        </a>
+
+    </li>
+    <div class="miniline"></div>
+</div>
+</div>
