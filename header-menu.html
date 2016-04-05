@@ -107,7 +107,7 @@ $(document).ready(function() {
     $("#username").keyup(function (e){
         clearTimeout(x_timer);
         var user_name = $(this).val();
-        if (user_name.length == null || user_name == "") {
+        if (user_name.length == null || user_name == "" || user_name.length < 3) {
             $("#user-result").html('<img src="img/not-available.png" />');
         } else {
           x_timer = setTimeout(function(){
