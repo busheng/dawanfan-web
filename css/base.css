@@ -106,7 +106,7 @@ textarea:-moz-placeholder {color:#999;}
 .hm-header .zb-vip{height: 240px;}
 
 .hm-header .user .user-tool{width: 100%;line-height: 40px;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
-.hm-header .user .user-tool a{position: relative;display: inline-block;padding-left: 40px;width:100px;height: 40px;color: #666;background: url(../images/new/user_list_icon.png?v1111) no-repeat;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
+.hm-header .user .user-tool a{position: relative;display: inline-block;padding-left: 40px;width:100px;height: 40px;color: #666;background: url() no-repeat;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
 .hm-header .user .user-tool a:first-child{border-top-left-radius: 3px;border-top-right-radius: 3px;}
 .hm-header .user .user-tool a:last-child{border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
 .hm-header .user .user-tool a .msgtips{right: 10px;top: 12px;}
