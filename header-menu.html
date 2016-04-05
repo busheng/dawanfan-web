@@ -1,12 +1,22 @@
 <?php require_once('php/api/config.php');
 $login = 0;
 //if logged in redirect to members page
+/*
 if( $user->is_logged_in() ){ 
   $login = 1;
 } else {
   $login = 0;
 }
+*/
 
+if (isset($_COOKIE['cookie_login']) && !empty(isset($_COOKIE['cookie_login']))){
+  $login = 1;
+  $_SESSION['loggedin'] = true;
+  $_SESSION['username'] = $_COOKIE['cookie_username'];
+  $_SESSION['memberID'] = $_COOKIE['cookie_id'];
+}else{
+  $login = 0;
+}
 ?>
 
 

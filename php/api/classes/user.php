@@ -68,15 +68,21 @@ class User extends Password{
 		$row = $this->get_user_hash($username);
 
 		if($this->password_verify($password,$row['password']) == 1){
-
 		    $_SESSION['loggedin'] = true;
 		    $_SESSION['username'] = $row['username'];
 		    $_SESSION['memberID'] = $row['memberID'];
+  			setcookie("cookie_username", $_SESSION['username'], time() + (86400 * 30), "/");
+  			setcookie("cookie_id", $_SESSION['memberID'], time() + (86400 * 30), "/"); 	 
+  			setcookie("cookie_login", $_SESSION['loggedin'], time() + (86400 * 30), "/"); 	 
+
 		    return true;
 		}
 	}
 
 	public function logout(){
+		setcookie("cookie_username", "", -1, "/"); 
+		setcookie("cookie_id", "", -1, "/"); 
+		setcookie("cookie_login", "", -1,"/"); 
 		session_destroy();
 	}
 
