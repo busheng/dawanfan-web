@@ -809,13 +809,6 @@ textarea {
   background-image: none;
 }
 html{height:100%;}
-body{
-	font: 13px/1.3 tahoma,arial,microsoft yahei,sans-serif;
-	color: #333;
-	background-color: #f6f6f6;
-  overflow-x:hidden; 
-}
-
 /* 滚动条 */
 ::-webkit-scrollbar{ height:7px; width:10px;}
 ::-webkit-scrollbar-thumb{
