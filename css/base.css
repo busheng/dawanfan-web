@@ -65,7 +65,7 @@ textarea:-moz-placeholder {color:#999;}
 .hm-header .hm-nav>li>a{display: block;padding: 0 20px;height: 77px;line-height: 76px;color: #333;font-size: 18px;border-top: 3px solid transparent;border-left: 1px solid transparent;border-right: 1px solid transparent;}
 .hm-header .hm-nav>li>a:hover{color: #ff361b;background-color: #fafafa;}
 .hm-header .hm-nav>li.on>a{color: #ff361b;background-color: #fafafa;border-top: 3px solid #ff361b;border-left: 1px solid #f1f1f1;border-right: 1px solid #f1f1f1;}
-.hm-header a i{position: relative;top: -3px;margin-left: 5px;display: inline-block;width: 12px;height: 7px;background: url(../images/new/index-s.png) no-repeat 0 0;-webkit-transition: -webkit-transform .3s linear;-moz-transition: -moz-transform .3s linear;-o-transition: -o-transform .3s linear;-ms-transition: -ms-transform .3s linear;transition: transform .3s linear;}
+.hm-header a i{position: relative;top: -3px;margin-left: 5px;display: inline-block;width: 12px;height: 7px;background: url(../img/index-s.png) no-repeat 0 0;-webkit-transition: -webkit-transform .3s linear;-moz-transition: -moz-transform .3s linear;-o-transition: -o-transform .3s linear;-ms-transition: -ms-transform .3s linear;transition: transform .3s linear;}
 .hm-header a:hover i{-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-o-transform: rotate(180deg);-ms-transform: rotate(180deg);transform: rotate(180deg);}
 
 .match{padding-left: 10px;padding-top: 10px;}
@@ -74,10 +74,10 @@ textarea:-moz-placeholder {color:#999;}
 
 
 .hm-header .hm-search{padding-top: 20px;width: 180px;height: 40px;}
-.hm-header .hm-search form{width: 180px;height: 40px;background: url(../images/new/index-s.png) no-repeat -320px 0;}
+.hm-header .hm-search form{width: 180px;height: 40px;background: url(../img//index-s.png) no-repeat -320px 0;}
 .hm-header .hm-search input{margin-left: 20px;padding: 10px 0;float: left;display: inline;width: 120px;height: 20px;line-height: 20px;font-size: 14px;background: transparent;border: none;}
 .hm-header .hm-search button{float: right;width: 40px;height: 40px;background: transparent;}
-.hm-header .hm-search form.on{background: url(../images/new/index-s.png) no-repeat -320px -511px;}
+.hm-header .hm-search form.on{background: url(../img/index-s.png) no-repeat -320px -511px;}
 
 .hm-header .hm-user{margin-left: 5px;height: 24px;line-height: 24px;}
 .hm-header .hm-user>li{float: left;margin:0 2px;padding: 27px 15px 0;display: inline;height: 53px;font-size: 14px;}
@@ -88,7 +88,7 @@ textarea:-moz-placeholder {color:#999;}
 .hm-header .hm-user>li>a>span{margin-left: 5px;display: inline-block;max-width: 160px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .hm-header .hm-user li a i{top: -9px;background-position: -67px 0;width: 9px;height: 5px;}
 
-.hm-header .hm-live-btn{margin-left: 25px;margin-top: 24px;padding-left: 35px;width: 85px;height: 32px;line-height: 32px;color: #fff;font-size: 16px;background: url(../images/new/index-s.png) no-repeat -380px -43px;}
+.hm-header .hm-live-btn{margin-left: 25px;margin-top: 24px;padding-left: 35px;width: 85px;height: 32px;line-height: 32px;color: #fff;font-size: 16px;background: url(../img/index-s.png) no-repeat -380px -43px;}
 
 
 .dropbox{left: 10px;top: 80px;width: 310px;height: 280px;background-color: #fff;box-shadow: 0 0 8px 8px rgba(0,0,0,.15);border-radius: 3px;-webkit-transition: all 0.3s;-moz-transition: all 0.3s;transition: all 0.3s;-webkit-transform: translateY(-5%);-moz-transform: translateY(-5%);-ms-transform: translateY(-5%);transform: translateY(-5%);opacity: 0;z-index: 999;visibility: hidden;}
@@ -137,8 +137,8 @@ textarea:-moz-placeholder {color:#999;}
 .hm-rss a p .on{color: #ff3922;}
 .hm-rss a p .off{color: #999;}
 .hm-rss a p span{display: inline-block;max-width: 78px;height: 22px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
-.hm-rss a p .username{margin-right: 5px;padding-left: 22px;background: url(../images/new/index-s.png) no-repeat 0 -25px;}
-.hm-rss a p .view{padding-left: 22px;background: url(../images/new/index-s.png) no-repeat 0 -62px;}
+.hm-rss a p .username{margin-right: 5px;padding-left: 22px;background: url(../img/index-s.png) no-repeat 0 -25px;}
+.hm-rss a p .view{padding-left: 22px;background: url(../img/index-s.png) no-repeat 0 -62px;}
 .hm-rss a:hover h4{color: #ff3922;}
 .no-rss{padding: 10px;color: #666;text-align: center;line-height: 26px;font-size: 14px;}
 
