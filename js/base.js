@@ -88,6 +88,9 @@ if($('#menusroll').length>0){
 var i;
 $(document).ready(function(){
     leftmenu();
+    $(window).resize(function(){
+        leftmenu();
+    });
     $.ajax({
         type: "GET",
         url:async_url + '/index.php?c=ajax&a=get_user_info&t=new2015&r='+Math.random(),
