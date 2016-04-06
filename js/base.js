@@ -87,6 +87,24 @@ if($('#menusroll').length>0){
 
 var i;
 $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url:async_url + '/index.php?c=ajax&a=get_user_info&t=new2015&r='+Math.random(),
+        dataType: 'jsonp',
+        jsonp:'callback',
+        success:function(result){
+
+            $('#user_info').html(result.val);
+            //
+            menu($('.hm-user .dropdown:eq(0)'),'.dropbox','.dropbox');
+            menu($('.hm-user .dropdown:eq(1)'),'.dropbox','.dropbox');
+            isSafari($('.hm-header .hm-user li a i'),'top',3);
+            isSafari($('.hm-rss a p'),'margin-top',0);
+            searchbox($(".hm-search :input"));
+            menu($('.hm-nav .dropdown'),'.dropbox','.dropbox');
+            menu($('.minimenu li'),'.dropbox','.dropbox');
+        }
+    });
 
     $('.list-nav>a:eq(2)').hover(function() {
         $('#listrss').addClass('show');
