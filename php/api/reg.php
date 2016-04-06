@@ -63,19 +63,6 @@ session_start();
 			$id = $db->lastInsertId('memberID');
 
 			//send email
-				$username = $_GET['username'];
-			$password = $_GET['password'];
-			$user->login($username,$password);
-			//echo "reg_success";
-			//redirect to index page
-
-		//else catch the exception and show the error.
-		} catch(PDOException $e) {
-		    $error[] = $e->getMessage();
-		    echo "请刷新页面，重新注册～";
-		}
-
-		try {
 			$to = $_GET['email'];
 			$subject = "注册确认－大碗饭TV";
 			$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
@@ -90,8 +77,17 @@ session_start();
 			$mail->subject($subject);
 			$mail->body($body);
 			$mail->send();
-		} catch (PhpMailerException $e) {
-			echo $e->errorMessage();
+
+			$username = $_GET['username'];
+			$password = $_GET['password'];
+			$user->login($username,$password);
+			echo "reg_success";
+			//redirect to index page
+
+		//else catch the exception and show the error.
+		} catch(PDOException $e) {
+		    $error[] = $e->getMessage();
+		    echo "请刷新页面，重新注册～";
 		}
 
 	} else {
