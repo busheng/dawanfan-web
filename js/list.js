@@ -7,7 +7,7 @@ function leftmenu(){
 }
 
 function listgame(start) {
-    var li_width = $('#list').width() / Math.ceil($('#list').width() / 234) - 36;
+    var li_width = $('#list').width() / Math.ceil($('#list').width() / 234) - 34;
 
     $("#list ul > li").slice(start).each(function(){
         $(this).width(li_width);
