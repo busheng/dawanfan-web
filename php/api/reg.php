@@ -76,11 +76,13 @@ session_start();
 			$mail->addAddress($to);
 			$mail->subject($subject);
 			$mail->body($body);
-			if(!$mail->send()) throw new Exception($mail->ErrorInfo);
+			if(!$mail->send()) {
+				echo "fail";
+			}
 			$username = $_GET['username'];
 			$password = $_GET['password'];
 			$user->login($username,$password);
-			echo "reg_success";
+			//echo "reg_success";
 			//redirect to index page
 
 		//else catch the exception and show the error.
