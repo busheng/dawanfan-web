@@ -71,18 +71,13 @@ $(function(){
     /*频道图片切换*/
     $('.hm-live li a').on({
         mouseenter:function(){
-            clearTimeout(live_pic_handle);
             var obj=$(this).find('img');
-            if(live_pic_obj && live_pic_obj.attr('data-id')==obj.attr('data-id'))return;
-            if(live_pic_obj)change_live_pic_init(live_pic_obj);
-            live_pic_obj=obj;
-            change_live_img();
+            
         },
         mouseleave:function(){
             //clearTimeout(live_pic_handle);
             //live_pic_cur=-1;
-            change_live_pic_init(live_pic_obj);
-        }
+          }
     });
     leftmenu();
     $(window).resize(function(){
