@@ -63,17 +63,19 @@ session_start();
 
 			//send email
 			$to = $_GET['email'];
-			$subject = "Registration Confirmation";
-			$body = "<p>Thank you for registering at demo site.</p>
-			<p>To activate your account, please click on this link: <a href='".DIR."activate.php?x=$id&y=$activasion'>".DIR."activate.php?x=$id&y=$activasion</a></p>
-			<p>Regards Site Admin</p>";
+			$subject = "注册确认－大碗饭TV";
+			$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+			$body = "<p>感谢您在大碗饭TV注册帐号！</p>
+			<p>大碗饭TV目前仍然处于开发阶段，许多后续功能将在以后相继推出。大碗饭TV的宗旨就是帮助用户第一时间，最快速度找到自己喜爱的主播，完善用户的直播观赏体验！</p>
+			<p>开发阶段会存在不足，也希望您能够谅解，如果有反馈和意见，请邮件coop@dawanfantv.com.</p>
+			<p>最后祝您身体健康，工作学习顺利，看直播上大碗饭TV!</p><p><a href = 'http://www.dawanfantv.com'>大碗饭TV</a></p>";
 
 			$mail = new Mail();
 			$mail->setFrom(SITEEMAIL);
 			$mail->addAddress($to);
 			$mail->subject($subject);
 			$mail->body($body);
-			//$mail->send();
+			$mail->send();
 			$username = $_GET['username'];
 			$password = $_GET['password'];
 			$user->login($username,$password);
