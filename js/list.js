@@ -61,6 +61,7 @@ $(function(){
 }); 
 searchbox($(".list-search :input"));
 window.onload = function(){
+     leftmenu();
   window.addEventListener('resize', function(event){
     leftmenu();
   });
