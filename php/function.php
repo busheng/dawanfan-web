@@ -283,7 +283,7 @@ while($row = mysql_fetch_assoc($result)) {
     $subscribed = $user->is_user_subscribe($row['cate'], $row['zhubo'], $userid);
     }
 ?>
-<li style="float:left;display:inline;">
+<li>
     <a href="<?php echo $row['link']; ?>" target=_blank >
 
     <img class = "lazy" src = "<?php echo $row['img_url']; ?>"/>
