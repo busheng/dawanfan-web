@@ -89,9 +89,12 @@ session_start();
 			$mail->addAddress($to);
 			$mail->subject($subject);
 			$mail->body($body);
-			$mail->send();
+			if ($mail->send()) {
 			echo "success";
-		} catch (phpmailerException $e) {
+			} else {
+				echo "fail";
+			} 
+		} catch (PhpMailerException $e) {
 			echo $e->errorMessage();
 		}
 
