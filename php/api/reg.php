@@ -75,7 +75,7 @@ session_start();
 			$mail->addAddress($to);
 			$mail->subject($subject);
 			$mail->body($body);
-			$mail->send();
+			if(!$mail->send()) throw new Exception($mail->ErrorInfo);
 			$username = $_GET['username'];
 			$password = $_GET['password'];
 			$user->login($username,$password);
