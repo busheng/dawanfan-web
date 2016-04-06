@@ -89,6 +89,7 @@ session_start();
 			$mail->addAddress($to);
 			$mail->subject($subject);
 			$mail->body($body);
+			$mail->SMTPSecure = 'ssl';
 			if ($mail->send()) {
 			echo "success";
 			} else {
