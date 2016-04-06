@@ -13,7 +13,7 @@ body{background-color: #f6f6f6;}
 .hm-live{}
 .hm-live li{position: relative;float: left;margin-left: 30px;margin-top: 25px;display: inline;width: 298px;}
 .hm-live li img{display: block;width: 288px;height: 163px;}
-.hm-live li a{display: block;padding: 4px 4px 10px;width: 288px;color: #333;background: url(../img/list-pic-bg.png) repeat-x bottom;border-radius: 2px;border: 1px solid #c8c8c8;box-shadow: 0 0 10px 2px rgba(102,102,102,.2);transition: box-shadow .5s ease-out;}
+.hm-live li a{display: block;padding: 4px 4px 10px;width: 288px;color: #333;background: url(../img/list-pic-bg.png) repeat-x bottom;border-radius: 2	px;border: 1px solid #c8c8c8;box-shadow: 0 0 10px 2px rgba(102,102,102,.2);transition: box-shadow .5s ease-out;}
 .hm-live li a:hover{padding: 2px 2px 8px;background: #fff;border: 3px solid #ff3922;box-shadow: 0 0 10px 2px rgba(255,57,34,.5);}
 .hm-live li a h4{margin-top: 15px;padding: 0 4px;height: 20px;line-height: 20px;color: #333;font-size: 14px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .hm-live li a p{margin-top: 10px;padding: 0 4px;line-height: 20px;}
