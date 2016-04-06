@@ -166,7 +166,7 @@ $(document).ready(function(){
     $.post('php/api/email_check.php',{ email: email }, function(data) {
         if(data == "not_available"){ 
             $('#error_part').text("这个邮箱已经被注册过了呦～");
-            return false;
+            //return false;
         } 
     });
     if (name == null || name == "") {

@@ -33,10 +33,11 @@ session_start();
 		$stmt = $db->prepare('SELECT email FROM members WHERE email = :email');
 		$stmt->execute(array(':email' => $_GET['email']));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+/*
 		if(!empty($row['email'])){
 			$error = 'Email provided is already in use.';
 		}
+		*/
 
 	}
 
