@@ -290,7 +290,7 @@ if ($action == "user_top") {
     $num = 0;
     while($row = mysql_fetch_assoc($result)) {
         $num += 1;
-        if ($num > 10) break;
+        if ($num > 8) break;
     ?>
             <a target=_blank href="<?php echo $row['link']; ?>" long="live">
             <h4><?php echo $row['title'];?></h4>
