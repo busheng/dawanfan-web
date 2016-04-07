@@ -3,7 +3,7 @@ body{background-color: #f6f6f6;}
 .hm-header{min-width: 1080px;}
 .hm-header .wp{width: auto;}
 .hm-header h1{width: 230px;}
-.hm-header h1 a{margin: 0 auto;}
+.hm-header h1 a{margin: 0 auto;margin-top:-10px;}
 .hm-header .hm-nav{margin-left: -4px;}
 .hm-header .hm-live-btn{margin-right: 20px;}
 
