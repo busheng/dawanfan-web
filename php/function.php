@@ -283,7 +283,7 @@ else if ($row == 0 && $action == "user_love") {
 }
 
 if ($action == "user_top") {
-    /*
+    
     ?>
     <div class="hm-rss">
     <?php
@@ -312,8 +312,8 @@ if ($action == "user_top") {
     </div>
     <a class="more pa" href="user_love">
                查看全部                      </a>                  
-    <?
-    */
+    <?php
+    
 
 } else {
     while($row = mysql_fetch_assoc($result)) {
