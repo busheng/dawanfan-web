@@ -295,7 +295,7 @@ if ($action == "user_top") {
             <a target=_blank href="<?php echo $row['link']; ?>" long="live">
             <h4><?php echo $row['title'];?></h4>
             <p>
-            <span class="state on"><?php echo to_chin($row['cate']); ?></span>
+            <span class="state on"><?php echo to_chin($row['web'])." - ".to_chin($row['cate']); ?></span>
             <span class="username"><?php $name = substr($row['zhubo'],6); echo $name; ?></span>
             <span class="view"><?php 
                     $i = $row['view'];
