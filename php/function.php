@@ -114,7 +114,7 @@ if ($tableID == 0) {
         $strsql = "SELECT * FROM dota2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM lol WHERE active = 'yes'and view > 50000 union all SELECT * FROM ls WHERE active = 'yes'and view > 50000 UNION ALL SELECT * FROM other WHERE active = 'yes'and view > 30000 order by view desc";
     } else if ($action == "hot") {
         $strsql = "SELECT * FROM dota2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM lol WHERE active = 'yes'and view > 100000 union all SELECT * FROM ls WHERE active = 'yes'and view > 100000 UNION ALL SELECT * FROM other WHERE active = 'yes'and view > 100000 order by view desc";
-    } else if ($action == "user_love") {
+    } else if ($action == "user_love"  || $action == "user_top") {
         $strsql = "SELECT * FROM dota2 
                         WHERE zhubo in (
                                 SELECT zhubo FROM loves WHERE userID = '{$userid}')
@@ -188,7 +188,7 @@ if ($tableID == 0) {
         $strsql = "SELECT * FROM baby2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM dota22 WHERE active = 'yes'and view > 50000 union all SELECT * FROM lol2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM ls2 WHERE active = 'yes'and view > 50000 UNION ALL SELECT * FROM war3 WHERE active = 'yes'and view > 50000 union all SELECT * FROM dnf WHERE active = 'yes'and view > 50000 union all SELECT * FROM movie WHERE active = 'yes'and view > 50000 union all SELECT * FROM sc2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM hwzb WHERE active = 'yes'and view > 50000 union all SELECT * FROM cf WHERE active = 'yes'and view > 80000 union all SELECT * FROM wow WHERE active = 'yes'and view > 50000 union all SELECT * FROM other2 WHERE active = 'yes'and view > 30000 order by view desc";
     } else if ($action == "hot") {
         $strsql = "SELECT * FROM baby2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM dota22 WHERE active = 'yes'and view > 100000 union all SELECT * FROM lol2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM ls2 WHERE active = 'yes'and view > 100000 UNION ALL SELECT * FROM war3 WHERE active = 'yes'and view > 100000 union all SELECT * FROM dnf WHERE active = 'yes'and view > 100000 union all SELECT * FROM movie WHERE active = 'yes'and view > 100000 union all SELECT * FROM sc2 WHERE active = 'yes'and view > 100000 union all SELECT * FROM hwzb WHERE active = 'yes'and view > 100000 union all SELECT * FROM cf WHERE active = 'yes'and view > 100000 union all SELECT * FROM wow WHERE active = 'yes'and view > 100000 union all SELECT * FROM other2 WHERE active = 'yes'and view > 100000 order by view desc";
-    } else if ($action == "user_love") {
+    } else if ($action == "user_love" || $action == "user_top") {
         $strsql = "SELECT * FROM dota22 
                         WHERE zhubo in (
                                 SELECT zhubo FROM loves WHERE userID = '{$userid}')
@@ -273,55 +273,95 @@ if ($userid == 0 && $action == "user_love"){
 }
 else if ($row == 0 && $action == "user_love") {
     echo "<h2>客官，您好像还没有关注任何主播，快去关注一下吧</h2>";
+} else if ($row == 0 && $action == "user_top") {
+    ?>
+                    <div class="no-rss">哇哦，订阅空空如也<br>快去把喜欢的主播装进来吧~</div>
+                    <div class="more pa"><a class="more pa" href="/hot">去看看热门直播</a></div>
+                    <div class="hm-rss">
+                    </div>
+    <?php
 }
 
-
-while($row = mysql_fetch_assoc($result)) {
-    if ($action == "user_love") {
-        $subscribed = 1;
-    } else {
-    $subscribed = $user->is_user_subscribe($row['cate'], $row['zhubo'], $userid);
-    }
-?>
-<li>
-    <a href="<?php echo $row['link']; ?>" target=_blank >
-
-    <img class = "lazy" src = "<?php echo $row['img_url']; ?>"/>
-        <h4><?php echo $row['title'];?></h4>
-        <p>
-            <span class="type fr"><?php echo to_chin($row['cate']); ?></span>
-            <span class="username"><?php $name = substr($row['zhubo'],6); echo $name; ?> </span>
+if ($action == "user_top") {
+    ?>
+    <div class="hm-rss">
+    <?php
+    $num = 0;
+    while($row = mysql_fetch_assoc($result)) {
+        $num += 1;
+        if ($num > 10) break;
+    ?>
+            <a target=_blank href="<?php echo $row['link']; ?>" long="live">
+            <h4><?php echo $row['title'];?></h4>
+            <p>
+            <span class="state on"><?php echo to_chin($row['cate']); ?></span>
+            <span class="username"><?php $name = substr($row['zhubo'],6); echo $name; ?></span>
             <span class="view"><?php 
-                $i = $row['view'];
-                if ($i >= 10000) {
-                    echo round(($i/10000),1).'万';
-                } else {
-                    echo $i;
-                }            
-                ?></span>
+                    $i = $row['view'];
+                    if ($i >= 10000) {
+                        echo round(($i/10000),1).'万';
+                    } else {
+                        echo $i;
+                    }            
+            ?></span>
+            </p>
+    <?php        
+    }
+    ?>
+    </div>
+    <a class="more pa" href="user_love">
+               查看全部                      </a>                  
+    <?
 
-        </p>
-    <i></i><div class="dnf"><?php echo to_chin($row['web']); ?></div> <em></em></a>
 
-                                <div class="focus-box">
-                                    <a cate = <?php echo $row['cate']; ?> zhubo = <?php echo $row['zhubo'];?> class="r-com-btn follow-btn hide subscribe" href="javascript:;" title="关注" data-anchor-info="follow"
-                                        <?php
-                                        if ($subscribed == 1) echo 'style = "display:none;"';
-                                        ?>
-                                        >关注一下</a>
-                                    <a class="r-com-btn follow-btn hide " href="javascript:;" title="关注" data-anchor-info="follow" style = "display:none;">已经取消关注</a>
-                                    <a class="r-com-btn follow-btn yet " href="javascript:;" data-anchor-info="followed" style = "display:none;">再次点击可取消关注</a>
-                                    <a cate = <?php echo $row['cate']; ?> zhubo = <?php echo $row['zhubo'];?> class="r-com-btn follow-btn yet unsubscribe" href="javascript:;" data-anchor-info="followed" 
-                                        <?php
-                                        if ($subscribed != 1) echo 'style = "display:none;"';
-                                        ?>
-                                        >已关注</a>
-                                </div>
-</li>
-<?php
+} else {
+    while($row = mysql_fetch_assoc($result)) {
+        if ($action == "user_love") {
+            $subscribed = 1;
+        } else {
+        $subscribed = $user->is_user_subscribe($row['cate'], $row['zhubo'], $userid);
+        }
+    ?>
+    <li>
+        <a href="<?php echo $row['link']; ?>" target=_blank >
+
+        <img class = "lazy" src = "<?php echo $row['img_url']; ?>"/>
+            <h4><?php echo $row['title'];?></h4>
+            <p>
+                <span class="type fr"><?php echo to_chin($row['cate']); ?></span>
+                <span class="username"><?php $name = substr($row['zhubo'],6); echo $name; ?> </span>
+                <span class="view"><?php 
+                    $i = $row['view'];
+                    if ($i >= 10000) {
+                        echo round(($i/10000),1).'万';
+                    } else {
+                        echo $i;
+                    }            
+                    ?></span>
+
+            </p>
+        <i></i><div class="dnf"><?php echo to_chin($row['web']); ?></div> <em></em></a>
+
+                                    <div class="focus-box">
+                                        <a cate = <?php echo $row['cate']; ?> zhubo = <?php echo $row['zhubo'];?> class="r-com-btn follow-btn hide subscribe" href="javascript:;" title="关注" data-anchor-info="follow"
+                                            <?php
+                                            if ($subscribed == 1) echo 'style = "display:none;"';
+                                            ?>
+                                            >关注一下</a>
+                                        <a class="r-com-btn follow-btn hide " href="javascript:;" title="关注" data-anchor-info="follow" style = "display:none;">已经取消关注</a>
+                                        <a class="r-com-btn follow-btn yet " href="javascript:;" data-anchor-info="followed" style = "display:none;">再次点击可取消关注</a>
+                                        <a cate = <?php echo $row['cate']; ?> zhubo = <?php echo $row['zhubo'];?> class="r-com-btn follow-btn yet unsubscribe" href="javascript:;" data-anchor-info="followed" 
+                                            <?php
+                                            if ($subscribed != 1) echo 'style = "display:none;"';
+                                            ?>
+                                            >已关注</a>
+                                    </div>
+    </li>
+    <?php
+    }
+
+    echo "<ul></div>";
 }
-
-echo "<ul></div>";
 mysql_free_result($result);
 mysql_close($con);
 }

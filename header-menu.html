@@ -1,5 +1,6 @@
 <?php require_once('php/api/config.php');
-$login = 0;
+      require_once('php/function.php');
+ $login = 0;
 //if logged in redirect to members page
 /*
 if( $user->is_logged_in() ){ 
@@ -277,16 +278,15 @@ function logout() {
                 </div>
             </li>
 
-                        <li class="dropdown pr">
-                <a><span>我的订阅<!--<em class="msgtips">0</em>--></span><i></i></a>
-
+            <li class="dropdown pr">
+                <a href = "user_love"><span>我的订阅<!--<em class="msgtips">0</em>--></span><i></i></a>
                 <div class="dropbox rss pa">
-                    <div class="no-rss">请点击左边菜单栏 － 我的订阅</div>
-                        <div class="more pa"><a class="more pa" href="/hot">去看看热门直播</a></div>
-                    <div class="hm-rss">
-                    </div>
-
-                                      
+                
+                <?php
+                   if ($login == 1) {  
+                      loadlive("","user_top",$user);
+                   }
+                ?>
                 </div>
             </li>
         </ul>
