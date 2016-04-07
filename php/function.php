@@ -306,6 +306,7 @@ if ($action == "user_top") {
                     }            
             ?></span>
             </p>
+            </a>
     <?php        
     }
     ?>

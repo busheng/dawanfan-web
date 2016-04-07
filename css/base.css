@@ -127,11 +127,11 @@ textarea:-moz-placeholder {color:#999;}
 .rss{width: 330px;padding-bottom: 50px;height: auto;left: auto;right: 0;}
 .rss:after{left: auto;right: 38px;}
 .hm-rss{text-align: left;}
-.hm-rss a{display: block;padding: 20px;height: 40px;overflow: hidden;line-height: 22px;color: #333;border-bottom: 1px solid #f0f0f0;transition: background-color .3s ease-in-out;}
+.hm-rss a{display: block;padding: 20px;height: 25px;overflow: hidden;line-height: 22px;color: #333;border-bottom: 1px solid #f0f0f0;transition: background-color .3s ease-in-out;}
 .hm-rss a:hover{background-color: #f0f0f0;border-bottom: 1px solid #eaeaea;}
 .hm-rss a:first-child{border-top-left-radius: 3px;border-top-right-radius: 3px;}
 .hm-rss a img{float: left;margin-right: 10px;display: inline;width: 40px;height: 40px;}
-.hm-rss a h4{margin-top: -2px;font-size: 14px;height: 22px;line-height: 22px;overflow: hidden;display: inline-block;white-space: nowrap;text-overflow: ellipsis;width: 235px;}
+.hm-rss a h4{margin-top: -10px;font-size: 14px;height: 22px;line-height: 22px;overflow: hidden;display: inline-block;white-space: nowrap;text-overflow: ellipsis;width: 235px;}
 .hm-rss a p{color: #666;font-size: 12px;margin-top: -6px;}
 .hm-rss a p .state{float: right;}
 .hm-rss a p .on{color: #ff3922;}
