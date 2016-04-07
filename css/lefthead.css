@@ -55,7 +55,7 @@ body{background-color: #f6f6f6;}
 
 .list-nav{height: 150px;border-top: 1px solid #3d3d3d;border-bottom: 1px solid #292929;border-right: 1px solid #36383b;}
 .list-nav a{display: block;position: relative;padding: 13px 0 13px 20px;height: 24px;line-height: 24px;color: #999;font-size: 16px;}
-.list-nav a:hover{color: #fff;background-color: #393939;}
+.list-nav a:hover{color: #fff;background-color: #e6b800;}
 .list-nav a.on{color: #fff;}
 .list-nav a i{float: left;margin-right: 10px;width: 24px;height: 24px;}
 .list-nav a i.icon-home{background: url(../img/icon_home.png);background-size: 24px 24px; background-repeat: no-repeat;}
@@ -72,7 +72,7 @@ body{background-color: #f6f6f6;}
 .list-bx h3{padding-left: 15px;height: 22px;line-height: 22px;color: #fff;font-size: 14px;}
 .hot-list{margin-left: 8px;padding-top: 5px;}
 .hot-list a{display: inline-block;margin-left: 7px;margin-top: 7px;width: 62px;height: 28px;line-height: 28px;color: #999;background-color: #434343;text-align: center;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
-.hot-list a:hover{background-color: #ff361b;color: #fff;}
+.hot-list a:hover{background-color: #ff9900;color: #fff;}
 .noborder{border-bottom: none;}
 
 .event{width: 200px;margin:0 auto;}
