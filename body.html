@@ -64,7 +64,14 @@
         <ul class="hm-live clearfix">
 
         <?php 
-            loadlive($_SESSION['cate'],$_SESSION['method'], $user);
+            if ($_SESSION['method'] == "contact") {
+        ?><h3></h3>
+            <h3 style="color:black;margin-left:50px;margin-top:20px;">  邮箱：coop@dawanfantv.com</h3>
+            <h3 style="color:black;margin-left:50px">    感谢宝贵意见和合作意向。</h3>
+        <?php
+            } else {
+                loadlive($_SESSION['cate'],$_SESSION['method'], $user);
+            }
         ?>
         </ul>
     </div>
