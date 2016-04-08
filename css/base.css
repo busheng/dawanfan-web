@@ -343,7 +343,7 @@ textarea:-moz-placeholder {color:#999;}
 .loginIbox .login-bd .label-row .checkbox{
   margin-right:5px;
   width:18px;height:18px;
-  background:url(../i/new-login-checkbox.png) no-repeat;
+  background:url(../img/login-checkbox.png) no-repeat;
   cursor:pointer;
 }
 .loginIbox .login-bd .label-row .checkboxed{
@@ -711,3 +711,12 @@ button{border:none;}
 .r-com-btn{display:inline-block;color:#fff;background:#f70;border-radius:4px;text-align:center}.r-com-btn:hover{background:#f14700}
 
 
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}

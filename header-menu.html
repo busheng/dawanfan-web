@@ -204,7 +204,11 @@ $(document).ready(function(){
         document.getElementById("error_part").innerHTML = "两次密码不一致！";
         return false;
     }
-
+    if($("#login_check").prop('checked') == false){
+        document.getElementById("error_part").innerHTML = "必须确认用户协议啊～";
+        return false;
+    }
+  
     var data = $(this).serialize();
         $.ajax({
             type: 'get',
@@ -342,7 +346,6 @@ function logout() {
           <label class="label input-labels">登录密码</label>
         </div>
         <!-- 极验验证 -->
-        <div class="jyyz js-geetest-script" style="height: 42px;"></div>
         <!-- 极验验证End -->
         <!--
         <div class="label-row">
@@ -430,16 +433,12 @@ function logout() {
             <input type="password" name="passwordConfirm" class="input inputs required" id="password-input-confirm" data-type="password" data-confirm="1" />
             <label class="label input-labels">再次输入登录密码</label>
           </div>
-          <!-- 极验验证 -->
-          <div class="jyyz js-geetest-normal-script" style="height: 42px;"></div>
-          <!-- 极验验证End -->
-          
           <div class="label-row">
-           <!-- <i class="checkbox dv js-checkbox"></i>-->
-           <!--
-            <input type="checkbox" class="dv terms-service-input js-checkbox-hidden" style="" />
-            <span class="dv">阅读并接受<a href="/common/agreement.html" target="_blank">《战旗TV用户协议》</a></span>
-          -->
+             <!--<i class="checkbox dv js-checkbox"></i>-->
+           
+            <input id = "login_check" type="checkbox" />
+            <span class="dv" style="margin-left:10px;">阅读并接受<a href="agreement" target="_blank">《大碗饭TV用户协议》</a></span>
+        
           </div>
           
 
