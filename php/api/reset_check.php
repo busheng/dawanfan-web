@@ -32,10 +32,12 @@
 
 			//send email
 			$to = $row['email'];
-			$subject = "Password Reset";
-			$body = "<p>Someone requested that the password be reset.</p>
-			<p>If this was a mistake, just ignore this email and nothing will happen.</p>
-			<p>To reset your password, visit the following address: <a href='".DIR."resetPassword?key=$token'>".DIR."resetPassword?key=$token</a></p>";
+			$subject = "大碗饭TV - 重置密码";
+			$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+			$body = "<p>请点击下面的链接重置密码</p>
+			<p>如果你不知道这封邮件或没有申请重置密码，请不要点击，请联系coop@dawanfantv.com.</p>
+			<p>点击链接重置密码: <a href='".DIR."resetPassword?key=$token'>".DIR."resetPassword?key=$token</a></p>
+			<p><a href = 'http://www.dawanfantv.com'>大碗饭TV</a></p>";
 
 			$mail = new Mail();
 			$mail->setFrom(SITEEMAIL);
