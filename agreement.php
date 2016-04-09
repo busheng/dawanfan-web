@@ -44,7 +44,7 @@
         .hm-w1000 .hm-live-btn{margin-top: 19px;margin-left: 15px;}
         .hm-w1000 .hm-header .hm-no-login{margin-top: 22px;padding-left: 15px;}
     </style>
-<title> <?php echo $_SESSION['1_title'] ?></title>
+<title>大碗饭TV - 用户注册协议</title>
 
 </head>
 
