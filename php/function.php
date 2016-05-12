@@ -43,23 +43,23 @@ function to_chin($word) {
 function getnum($word){
     switch ($word) {
         case 'lol':
-            return 5000;
+            return 3000;
         case 'ls':
             return 1000;
         case 'dota2':
             return 1000;
 	case 'movie':
-	    return 1000;
+	    return 300;
 	case 'hwzb':
 	    return 1000;
 	case 'baby':
-	    return 3000;
+	    return 2000;
 	case 'wow':
 	    return 1000;
 	case 'war3':
 	    return 1000;
 	case 'other':
-	    return 3000;
+	    return 2000;
 	case 'dnf':
 	    return 1000;
 	case 'cf':
@@ -183,7 +183,7 @@ if ($tableID == 0) {
     }
 } else {
         if($action == "cate") {
-        $strsql = "SELECT * FROM ".$tb_name."2 WHERE active = 'yes'and view >= ".$viewnum." order by view desc";
+        $strsql = "SELECT * FROM ".$tb_name."2 WHERE active = 'yes'and view >= ".$viewnum." order by view desc limit 50";
     } else if ($action == "index") {
         $strsql = "SELECT * FROM baby2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM dota22 WHERE active = 'yes'and view > 50000 union all SELECT * FROM lol2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM ls2 WHERE active = 'yes'and view > 50000 UNION ALL SELECT * FROM war3 WHERE active = 'yes'and view > 50000 union all SELECT * FROM dnf WHERE active = 'yes'and view > 50000 union all SELECT * FROM movie WHERE active = 'yes'and view > 50000 union all SELECT * FROM sc2 WHERE active = 'yes'and view > 50000 union all SELECT * FROM hwzb WHERE active = 'yes'and view > 50000 union all SELECT * FROM cf WHERE active = 'yes'and view > 80000 union all SELECT * FROM wow WHERE active = 'yes'and view > 50000 union all SELECT * FROM other2 WHERE active = 'yes'and view > 30000 order by view desc";
     } else if ($action == "hot") {
