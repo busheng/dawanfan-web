@@ -1,27 +1,3 @@
-<script type="text/javascript">
- $(document).ready(function(){
-    $('#left_my_subscrite').click(function(){
-        $.ajax({
-            type: 'get',
-            url: 'php/api/is_login.php',
-            success:function(data) {
-              if(data == "unlogin") {
-                    alert("客官请先登入～");
-                    document.getElementById("registerIbox").style.display = "block";
-                    document.getElementById("userLoginBox").style.display = "none";
-              } else {
-                    window.location.replace("user_love");
-
-              }
-
-            }
-        });
-    });
-
-});
-
-</script>
-
 <div class="hm-menu pf">
 <div class="allmenu">
     
