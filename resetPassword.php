@@ -106,10 +106,10 @@ $(document).ready(function(){
             data: data + "&keys=" + key,
             success:function(data) {
                if (data == "reset_success") {
-                    alert("修改密码成功！自动跳转到主页。");
+                    alert("修改密码成功！点击确定自动跳转到主页。");
                 setTimeout(function(){
                   window.location.href = "http://www.dawanfantv.com";
-                }, 500); 
+                }, 100); 
                } else {
                   alert(data);
                }
